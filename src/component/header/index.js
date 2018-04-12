@@ -5,23 +5,45 @@ import './_header.scss';
 import Controller from '../controller';
 
 class Header extends Component {
+  handleNavigation = () => {
+    const { pathname } = this.props.location;
+    let nextLocation = '/';
+    if (pathname === '/') nextLocation = '/live';
+    this.props.history.push(nextLocation);
+  }
+
   render() {
+    const atLanding = this.props.location.pathname === '/';
+
+    const buttonText = (atLanding ? 'Code' : 'Build');
+    
+    const pageButton = (
+      <button
+        className="nav-button"
+        onClick={this.handleNavigation}
+      >
+        { `${buttonText} a K-Ary Tree Instead` }
+      </button>
+    );
+
     const liveHeader = (
-      <h2>Code a K-ary tree in the box!</h2>
+      <Fragment>
+        <h2>Code a K-ary tree in the box!</h2>
+        { pageButton }
+      </Fragment>
     );
 
     const landingHeader = (
       <Fragment>
         <h2>Build your own K-ary tree!</h2>
+        <nav>
+          { pageButton }
+        </nav>
         <Controller />
       </Fragment>
     );
 
-    const subHeader = (
-      this.props.location.pathname === '/'
-        ? landingHeader
-        : liveHeader
-    );
+    const subHeader = (atLanding ? landingHeader : liveHeader);
 
     return (
       <header className="header">

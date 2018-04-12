@@ -14,4 +14,20 @@
     font-size: 1.5em;
     margin-bottom: $pad-l-fixed;
   }
+
+  .nav-button {
+    width: 375px;
+    background: $brand-primary-dark;
+    color: $white;
+    line-height: 15px;
+
+    &:hover {
+      background: $brand-primary-light;
+    }
+
+    &:active {
+      background: $white;
+      color: $brand-primary;
+    }
+  }
 }
