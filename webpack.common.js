@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: `./src/main.js`,
@@ -13,14 +12,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'gitQL',
+      title: 'K-Ary Trees, Tries, and Devtools',
     }),
-    new EnvironmentPlugin({
-      API_URL: process.env.API_URL,
-      AUTH_CLIENT_ID: process.env.AUTH_CLIENT_ID,
-      AUTH_REDIRECT_URI: process.env.AUTH_REDIRECT_URI,
-    }),
-    new FaviconsWebpackPlugin('./src/assets/gitQL-small.png'),
   ],
   module: {
     rules: [
@@ -37,6 +30,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'stage-2', 'react'],
+            plugins: ['transform-react-jsx-source'],
             cacheDirectory: true,
           },
         },
