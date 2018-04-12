@@ -5,7 +5,17 @@ import SimpleForm from '../simple-form';
 
 class Landing extends Component {
   state = {
-    tree: new Kary('hey there bub'),
+    tree: new Kary(),
+  }
+
+  addNode = (data, targetId) => {
+    const { tree } = this.state;
+
+    const newTree = !tree.root 
+      ? tree.addFirstNode(data) 
+      : tree.reduce({ type: 'ADD', data, targetId });
+    
+    this.setState({ tree: newTree });
   }
 
   render() {

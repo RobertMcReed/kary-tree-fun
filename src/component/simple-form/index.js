@@ -26,8 +26,6 @@ class SimpleForm extends Component {
       props: { onSubmit },
     } = this;
 
-    emptyState();
-
     if (!input.length || clean(input) === 'nicetrywiseguy...') this.setState({ input: 'Please enter a value...' });
     else if (clean(input) === 'pleaseenteravalue...') this.setState({ input: 'Nice try wise guy...' });
     else {
