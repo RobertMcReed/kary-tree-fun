@@ -47,3 +47,5 @@ export const makeActions = type => ({
     payload: null,
   }),
 });
+
+export const cleanString = str => str.replace(/ /g, '').toLowerCase();
