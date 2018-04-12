@@ -4,7 +4,8 @@ import { cleanString as clean } from '../../lib/util';
 
 class SimpleForm extends Component {
   state = {
-    input: '',
+    input1: '',
+    input2: '',
   }
 
   initialState = { ...this.state }
@@ -22,14 +23,15 @@ class SimpleForm extends Component {
     
     const {
       emptyState, 
-      state: { input }, 
+      state: { input1, input2 }, 
       props: { onSubmit },
     } = this;
 
-    if (!input.length || clean(input) === 'nicetrywiseguy...') this.setState({ input: 'Please enter a value...' });
-    else if (clean(input) === 'pleaseenteravalue...') this.setState({ input: 'Nice try wise guy...' });
+    if (!input1.length) {
+      this.setState({ input1: 'Please enter a value' });
+    } else if (!input2.length && this.props.numInputs > 1) this.setState({ input2: 'Please enter a value' });
     else {
-      onSubmit(input);
+      onSubmit(input1, input2);
       emptyState();
     }
   }
@@ -41,24 +43,35 @@ class SimpleForm extends Component {
       props: {
         inputClass,
         inputStyle,
-        placeholder,
+        placeholder1,
+        placeholder2,
         buttonClass,
         buttonStyle,
         buttonText,
       },
-      state: { input },
+      state: { input1, input2 },
     } = this;
 
     return (
       <form onSubmit={handleSubmit}>
         <input 
-          name="input"
-          value={input}
+          name="input1"
+          value={input1}
           style={inputStyle}
           className={inputClass}
           onChange={handleChange} 
-          placeholder={placeholder}
+          placeholder={placeholder1}
         />
+        { this.props.numInputs > 1 ?
+          <input 
+            name="input2"
+            value={input2}
+            style={inputStyle}
+            className={inputClass}
+            onChange={handleChange} 
+            placeholder={placeholder2}
+          /> : null
+        }
         <button
           style={buttonStyle}
           className={buttonClass}

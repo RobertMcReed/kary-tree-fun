@@ -21,13 +21,15 @@ class Landing extends Component {
   render() {
     return (
       <Fragment>
-        <pre>
-          {JSON.stringify(this.state.tree, null, 4)}
+        <pre style={{lineHeight: '1.5em' }}>
+          {JSON.stringify(this.state.tree, null, 8)}
         </pre>
         <SimpleForm 
           buttonStyle={{ color: 'black' }} 
           inputStyle={{ color: 'purple', fontSize: '1em' }}
-          placeholder="Hey there bubba..."
+          placeholder1="Node Value..."
+          placeholder2="Parent Id..."
+          numInputs={this.state.tree.root ? 2 : 1}
           buttonText="Add Node"
           onSubmit={this.addNode}
         />
