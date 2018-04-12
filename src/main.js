@@ -3,18 +3,13 @@ import { Provider } from 'react-redux';
 import reduxLogger from 'redux-logger';
 import { render as renderDOM } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './style/main.scss';
 import reducer from './reducer';
 import App from './component/app';
 import thunk from './middleware/thunk';
 
-const PROD = process.env.NODE_ENV === 'production';
-
-const middleware = PROD 
-  ? applyMiddleware(thunk)
-  : composeWithDevTools(applyMiddleware(reduxLogger, thunk));
+const middleware = applyMiddleware(reduxLogger, thunk);
 
 const store = createStore(reducer, middleware);
 
