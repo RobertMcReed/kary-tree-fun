@@ -18,27 +18,47 @@ class SimpleForm extends Component {
     });
   }
 
-  handleSubmit = e => {
+  handleOneAndTwo = handleFn => e => {
     e.preventDefault();
     
     const {
       emptyState, 
       state: { input1, input2 }, 
-      props: { onSubmit },
     } = this;
 
     if (!input1.length) {
       this.setState({ input1: 'Please enter a value' });
     } else if (!input2.length && this.props.numInputs > 1) this.setState({ input2: 'Please enter a value' });
     else {
-      onSubmit(input1, input2);
+      handleFn(input1, input2);
+      emptyState();
+    }
+  }
+
+  handleOne = this.handleOneAndTwo(this.props.onOne);
+  handleTwo = this.handleOneAndTwo(this.props.onTwo);
+
+  handleThree = e => {
+    e.preventDefault();
+    
+    const {
+      emptyState, 
+      state: { input2 }, 
+      props: { onThree },
+    } = this;
+
+    if (!input2.length) this.setState({ input2: 'Please enter a value' });
+    else {
+      onThree(input2);
       emptyState();
     }
   }
 
   render() {
     const {
-      handleSubmit,
+      handleOne,
+      handleTwo,
+      handleThree,
       handleChange,
       props: {
         inputClass,
@@ -47,13 +67,17 @@ class SimpleForm extends Component {
         placeholder2,
         buttonClass,
         buttonStyle,
-        buttonText,
+        buttonText1,
+        buttonText2,
+        buttonText3,
       },
       state: { input1, input2 },
     } = this;
 
+    const show = this.props.numInputs > 1;
+
     return (
-      <form onSubmit={handleSubmit}>
+      <form>
         <input 
           name="input1"
           value={input1}
@@ -62,7 +86,7 @@ class SimpleForm extends Component {
           onChange={handleChange} 
           placeholder={placeholder1}
         />
-        { this.props.numInputs > 1 ?
+        { show ?
           <input 
             name="input2"
             value={input2}
@@ -72,12 +96,33 @@ class SimpleForm extends Component {
             placeholder={placeholder2}
           /> : null
         }
-        <button
-          style={buttonStyle}
-          className={buttonClass}
-        >
-          {buttonText || 'Submit'}
-        </button>
+        <div className="buttons" >
+          <button
+            style={buttonStyle}
+            className={buttonClass}
+            onClick={handleOne}
+          >
+            {buttonText1 || 'Submit'}
+          </button>
+          { show ?
+            <button
+              style={buttonStyle}
+              className={buttonClass}
+              onClick={handleTwo}
+            >
+              {buttonText2 || 'Submit'}
+            </button> : null
+          }
+          { show ? 
+            <button
+              style={buttonStyle}
+              className={buttonClass}
+              onClick={handleThree}
+            >
+              {buttonText3 || 'Submit'}
+            </button> : null
+          }
+        </div>
       </form>
     );
   }

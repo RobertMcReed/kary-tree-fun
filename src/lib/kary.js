@@ -53,7 +53,7 @@ class Kary {
         }
 
         if (!(targetId === id && type === 'REMOVE')) {
-          const nextParent = new Node(value, id);
+          const nextParent = new Node(newValue, id);
           newParent.children.push(nextParent);
           _cloneTreeRecursively(nextParent, nextChildren);
         }
