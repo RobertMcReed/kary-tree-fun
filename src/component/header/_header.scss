@@ -4,6 +4,20 @@
   text-align: center;
   margin-top: $pad-xl-fixed;
 
+  a {
+      h1 {
+        display: inline-block;
+        
+        &:hover {
+          color: $white;
+        }
+
+        &:active {
+          color: $brand-primary-dark;
+        }
+      }
+  }
+
   h1 {
     color: $brand-primary;
     font-size: 3em;

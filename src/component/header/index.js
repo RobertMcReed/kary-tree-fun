@@ -54,8 +54,8 @@ class Header extends Component {
           target="_blank" 
         >
           <h1>K-Ary Trees are Fun!</h1>
-          { subHeader }
         </a>
+        { subHeader }
       </header>
     );
   }
