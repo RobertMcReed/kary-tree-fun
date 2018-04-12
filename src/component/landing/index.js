@@ -1,23 +1,14 @@
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 
-import { 
-  addNodeAction, 
-  addRootNodeAction, 
-} from '../../action/tree';
 import Kary from '../../lib/kary';
 import SimpleForm from '../simple-form';
+import { addNodeAction } from '../../action/tree';
 
 class Landing extends Component {
   addNode = (data, targetId) => {
-    const { 
-      addNode, 
-      addRootNode, 
-      tree: { root },
-    } = this.props;
-
-    if (!root) addRootNode(data);
-    else addNode(data, targetId);
+    const { dispatchAddNode } = this.props;
+    dispatchAddNode(data, targetId);
   }
 
   render() {
@@ -42,8 +33,7 @@ class Landing extends Component {
 
 const mapStateToProps = ({ tree }) => ({ tree });
 const mapDispatchToProps = (dispatch) => ({ 
-  addRootNode: data => dispatch(addRootNodeAction(data)),
-  addNode: (data, targetId) => dispatch(addNodeAction(data, targetId)),
+  dispatchAddNode: (data, targetId) => dispatch(addNodeAction(data, targetId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
