@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader';
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -23,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
