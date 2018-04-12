@@ -29,5 +29,17 @@
       background: $white;
       color: $brand-primary;
     }
+
+    &.at-live {
+      &:hover {
+        color: $brand-primary;
+        background: $brand-primary-dark;
+      }
+
+      &:active {
+        background: $white;
+        color: $brand-primary;
+      }
+    }
   }
 }

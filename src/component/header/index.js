@@ -19,8 +19,9 @@ class Header extends Component {
     
     const pageButton = (
       <button
-        className="nav-button"
+        className={atLanding ? 'nav-button' : 'nav-button at-live'}
         onClick={this.handleNavigation}
+        style={{ }}
       >
         { `${buttonText} a K-Ary Tree Instead` }
       </button>
