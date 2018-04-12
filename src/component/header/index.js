@@ -49,7 +49,7 @@ class Header extends Component {
     return (
       <header className="header">
         <a
-          href="https://github.com/RobertMcReed/kary-tree-fun#readme" 
+          href="https://github.com/RobertMcReed/kary-tree-fun" 
           rel="noopener noreferrer"
           target="_blank" 
         >
