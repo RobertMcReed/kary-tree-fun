@@ -17,6 +17,12 @@ class Kary {
     this.root = value === undefined ? null : new Node(value, id);
   }
 
+  addFirstNode(value) {
+    if (this.root) throw new Error('Root not null');
+
+    return new Kary(value);
+  }
+
   // pass an options object with the following:
   // targetId: The id of the node you want to update or remove
   // data: the value of the new or updated node
