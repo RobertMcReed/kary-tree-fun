@@ -79,6 +79,7 @@ class SimpleForm extends Component {
     return (
       <form>
         <input 
+          type="text"
           name="input1"
           value={input1}
           style={inputStyle}
@@ -88,6 +89,7 @@ class SimpleForm extends Component {
         />
         { show ?
           <input 
+            type="text"
             name="input2"
             value={input2}
             style={inputStyle}

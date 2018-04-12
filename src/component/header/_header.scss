@@ -1,1 +1,12 @@
 @import '../../style/vars.scss';
+
+.header {
+  text-align: center;
+  margin-top: $pad-xl-fixed;
+
+  h1 {
+    color: $brand-primary;
+    font-size: 3em;
+    margin-bottom: $pad-l-fixed;
+  }
+}

@@ -29,8 +29,6 @@ class Controller extends Component {
     return (
       <Fragment>
         <SimpleForm 
-          buttonStyle={{ color: 'black' }} 
-          inputStyle={{ color: 'purple', fontSize: '1em' }}
           placeholder1="Node Value..."
           placeholder2="Target Id..."
           numInputs={this.props.tree.root ? 2 : 1}

@@ -7,9 +7,8 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <nav className="nav">
-          <Controller />
-        </nav>
+        <h1>K-Ary Trees are Fun!</h1>
+        <Controller />
       </header>
     );
   }

@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 
+import './_landing.scss';
+
 class Landing extends Component {
   render() {
     return (
-      <section className="tree">
+      <section className="landing">
         <pre style={{ lineHeight: '1.5em' }}>
-          {JSON.stringify(this.props.tree, null, 8)}
+          {JSON.stringify(this.props.tree, null, 4)}
         </pre>
       </section>
     );

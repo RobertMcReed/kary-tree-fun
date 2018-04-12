@@ -1,13 +1,52 @@
 @import './vars.scss';
 @import './reset.css';
-@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Titillium+Web');
  
 * {
+  letter-spacing: 5px;
   transition: all 375ms;
   box-sizing: border-box;
-  color: $white;
+  color: $brand-secondary;
+  font-family: $font-primary;
 }
 
 body {
   background-color: $black;
+}
+
+h1 {
+  font-family: $font-header;
+}
+
+input[type=text], button {
+  padding: $pad-s / 2 $pad-s;
+  color: $brand-primary;
+  letter-spacing: 2.5px;
+  margin: $pad-s;
+  font-size: 1em;
+  outline: none;
+  width: 375px;
+}
+
+input[type=text]:focus {
+  background-color: $brand-primary-light;
+  color: $white;
+}
+
+button {
+  padding: $pad-s;
+  margin: $pad-s;
+  width: 160px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $brand-primary-light;
+    color: $white;
+  }
+
+  &:active {
+    background: $brand-primary-dark;
+  }
 }

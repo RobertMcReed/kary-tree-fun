@@ -1,5 +1,4 @@
 $brand-primary: #E75DAB;
-// $brand-primary-light: #e26eb0;
 $brand-primary-light: lighten($color: $brand-primary, $amount: 10);
 $brand-primary-dark: darken($color: $brand-primary, $amount: 50);
 
@@ -8,3 +7,15 @@ $brand-tertiary: #5de799;
 
 $white: white;
 $black: black;
+
+$pad-s-fixed: 5px;
+$pad-m-fixed: 2 * $pad-s-fixed;
+$pad-l-fixed: 2 * $pad-m-fixed;
+$pad-xl-fixed: 4 * $pad-m-fixed;
+
+$pad-s: 0.5em;
+$pad-m: 2 * $pad-s;
+$pad-l: 2 * $pad-m;
+
+$font-header: 'Bungee Shade', cursive;
+$font-primary: 'Titillium Web', sans-serif;

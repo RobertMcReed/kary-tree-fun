@@ -1,1 +1,19 @@
 @import '../../style/vars.scss';
+
+.footer {
+  text-align: center;
+  padding: $pad-l-fixed;
+
+  a {
+    text-decoration: none;
+    color: $brand-primary;
+
+    &:hover {
+      color: $brand-primary-light;
+    }
+
+    &:active {
+      color: $white;
+    }
+  }
+}
