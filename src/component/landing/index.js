@@ -1,35 +1,37 @@
+import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 
+import { 
+  addNodeAction, 
+  addRootNodeAction, 
+} from '../../action/tree';
 import Kary from '../../lib/kary';
 import SimpleForm from '../simple-form';
 
 class Landing extends Component {
-  state = {
-    tree: new Kary(),
-  }
-
   addNode = (data, targetId) => {
-    const { tree } = this.state;
+    const { 
+      addNode, 
+      addRootNode, 
+      tree: { root },
+    } = this.props;
 
-    const newTree = !tree.root 
-      ? tree.addFirstNode(data) 
-      : tree.reduce({ type: 'ADD', data, targetId });
-    
-    this.setState({ tree: newTree });
+    if (!root) addRootNode(data);
+    else addNode(data, targetId);
   }
 
   render() {
     return (
       <Fragment>
-        <pre style={{lineHeight: '1.5em' }}>
-          {JSON.stringify(this.state.tree, null, 8)}
+        <pre style={{ lineHeight: '1.5em' }}>
+          {JSON.stringify(this.props.tree, null, 8)}
         </pre>
         <SimpleForm 
           buttonStyle={{ color: 'black' }} 
           inputStyle={{ color: 'purple', fontSize: '1em' }}
           placeholder1="Node Value..."
           placeholder2="Parent Id..."
-          numInputs={this.state.tree.root ? 2 : 1}
+          numInputs={this.props.tree.root ? 2 : 1}
           buttonText="Add Node"
           onSubmit={this.addNode}
         />
@@ -38,4 +40,10 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+const mapStateToProps = ({ tree }) => ({ tree });
+const mapDispatchToProps = (dispatch) => ({ 
+  addRootNode: data => dispatch(addRootNodeAction(data)),
+  addNode: (data, targetId) => dispatch(addNodeAction(data, targetId)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);
