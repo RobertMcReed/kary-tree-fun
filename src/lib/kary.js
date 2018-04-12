@@ -30,7 +30,9 @@ class Kary {
       targetId,
     } = options;
 
-    if ((!this.root && !type === 'ADD') || (type === 'REMOVE' && targetId === this.root.id)) return new Kary();
+    if (
+      (!this.root && !type === 'ADD') || (type === 'REMOVE' && targetId === this.root.id)
+    ) return new Kary();
     else if (!this.root && type === 'ADD') return new Kary(data);
 
     let nextValue = this.root.value;
