@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
 
 import './_header.scss';
 import Controller from '../controller';
@@ -48,8 +48,14 @@ class Header extends Component {
 
     return (
       <header className="header">
-        <h1>K-Ary Trees are Fun!</h1>
-        { subHeader }
+        <a
+          href="https://github.com/RobertMcReed/kary-tree-fun#readme" 
+          rel="noopener noreferrer"
+          target="_blank" 
+        >
+          <h1>K-Ary Trees are Fun!</h1>
+          { subHeader }
+        </a>
       </header>
     );
   }

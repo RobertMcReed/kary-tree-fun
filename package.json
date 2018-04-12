@@ -21,12 +21,12 @@
   "author": "Robert Reed",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RobertMcReed/kary-trie-devtools-demo/"
+    "url": "git+https://github.com/RobertMcReed/kary-tree-fun/"
   },
   "bugs": {
-    "url": "https://github.com/RobertMcReed/kary-trie-devtools-demo/issues"
+    "url": "https://github.com/RobertMcReed/kary-tree-fun/issues"
   },
-  "homepage": "https://github.com/RobertMcReed/kary-trie-devtools-demo#readme",
+  "homepage": "https://github.com/RobertMcReed/kary-tree-fun#readme",
   "license": "MIT",
   "dependencies": {
     "ajv": "^6.4.0",
