@@ -1,0 +1,10 @@
+$brand-primary: #E75DAB;
+// $brand-primary-light: #e26eb0;
+$brand-primary-light: lighten($color: $brand-primary, $amount: 10);
+$brand-primary-dark: darken($color: $brand-primary, $amount: 50);
+
+$brand-secondary: #5de7de;
+$brand-tertiary: #5de799;
+
+$white: white;
+$black: black;

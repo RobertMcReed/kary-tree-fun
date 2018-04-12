@@ -1,0 +1,12 @@
+@import './vars.scss';
+@import './reset.css';
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline|Titillium+Web');
+ 
+* {
+  transition: all 375ms;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $black;
+}
