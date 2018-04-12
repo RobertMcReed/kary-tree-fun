@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'K-Ary Trees, Tries, and Devtools',
+      title: 'K-Ary Trees',
     }),
   ],
   module: {

@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node index.js",
     "watch": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "heroku-postbuild": "webpack --progress"
   },
   "repository": {
     "type": "git",
