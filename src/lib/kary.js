@@ -1,6 +1,4 @@
-// import { v4 as uuid } from 'uuid';
-
-const uuid = require('uuid/v4');
+import { v4 as uuid } from 'uuid';
 
 class Node {
   constructor(value, id) {
@@ -19,44 +17,52 @@ class Kary {
     this.root = value === undefined ? null : new Node(value, id);
   }
 
-  // addNode(value, parentId) {
-
-
-  // }
-
   // pass an options object with the following:
   // targetId: The id of the node you want to update or remove
   // data: the value of the new or updated node
   // action: UPDATE, ADD, or REMOVE
   // 
   // if no options are provided a deep copy is performed
-  reduce(options) {
-    if (!this.root) return new Kary();
-    
-    const newTree = new Kary(this.root.value, this.root.id);
+  reduce(options = {}) {
+    const {
+      data,
+      type,
+      targetId,
+    } = options;
 
-    const _cloneTreeRecursively = (parent, children) => {
+    if (!this.root || (type === 'REMOVE' && targetId === this.root.id)) return new Kary();
+
+    let nextValue = this.root.value;
+    const rootChildren = [...this.root.children];
+
+    if (this.root.id === targetId) {
+      if (type === 'UPDATE') nextValue = data;
+      else if (type === 'ADD') rootChildren.push(new Node(data));
+    }
+
+    const newTree = new Kary(nextValue, this.root.id);
+
+    const _cloneTreeRecursively = (newParent, children) => {
       children.forEach(({ value, id, children: nextChildren }) => {
-        const nextParent = new Node(value, id);
-        parent.children.push(nextParent);
-        _cloneTreeRecursively(nextParent, nextChildren);
+        let newValue = value;
+
+        if (targetId === id) {
+          if (type === 'ADD') nextChildren.push(new Node(data));
+          else if (type === 'UPDATE') newValue = data;
+        }
+
+        if (!(targetId === id && type === 'REMOVE')) {
+          const nextParent = new Node(value, id);
+          newParent.children.push(nextParent);
+          _cloneTreeRecursively(nextParent, nextChildren);
+        }
       });
     };
 
-    _cloneTreeRecursively(newTree.root, this.root.children);
+    _cloneTreeRecursively(newTree.root, rootChildren);
 
     return newTree;
   }
 }
 
-const tree = new Kary('butt');
-tree.root._addChild('face');
-tree.root._addChild('leg');
-tree.root._addChild('arm');
-tree.root._addChild('torso');
-tree.root.children[0]._addChild('bneck');
-console.log(JSON.stringify(tree, null, 4));
-const clone = tree.reduce();
-console.log(JSON.stringify(clone, null, 4));
-
-// export default Kary;
+export default Kary;
