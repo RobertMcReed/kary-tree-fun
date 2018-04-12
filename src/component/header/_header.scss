@@ -20,6 +20,7 @@
     background: $brand-primary-dark;
     color: $white;
     line-height: 15px;
+    margin-bottom: $pad-l-fixed * 1.25;    
 
     &:hover {
       background: $brand-primary-light;
@@ -31,8 +32,6 @@
     }
 
     &.at-live {
-      margin-bottom: $pad-l-fixed * 1.25;
-
       &:hover {
         color: $brand-primary;
         background: $brand-primary-dark;

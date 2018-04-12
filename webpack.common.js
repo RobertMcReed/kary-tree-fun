@@ -4,7 +4,7 @@ const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: `./src/main.js`,
+  entry: `${__dirname}/src/main.js`,
   output: {
     filename: '[name].[hash].js',
     path: `${__dirname}/dist`,
