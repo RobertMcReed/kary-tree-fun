@@ -17,6 +17,14 @@
     "url": ""
   },
   "author": "Robert Reed",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertMcReed/kary-trie-devtools-demo/"
+  },
+  "bugs": {
+    "url": "https://github.com/RobertMcReed/kary-trie-devtools-demo/issues"
+  },
+  "homepage": "https://github.com/RobertMcReed/kary-trie-devtools-demo#readme",
   "license": "MIT",
   "dependencies": {
     "ajv": "^6.4.0",
