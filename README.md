@@ -9,3 +9,4 @@ Tech showcased in this build:
 - Babel Stage 2
 - Redux DevTools Extension
 - React Hot Loader
+- More
